@@ -21,3 +21,6 @@ mkdir /var/tabinsight/data
 
 # Install elasticsearhc curator
 sudo pip install elasticsearch-curator
+
+# Create crontab
+sudo crontab crontab.txt
