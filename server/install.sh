@@ -13,4 +13,11 @@ sudo chmod -R 755
 . venv/bin/activate
 
 ## Install flask
-pip install Flask
+sudo pip install Flask
+
+# Create dirs
+mkdir /var/tabinsight
+mkdir /var/tabinsight/data
+
+# Install elasticsearhc curator
+sudo pip install elasticsearch-curator
