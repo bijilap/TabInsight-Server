@@ -4,6 +4,8 @@ from flask import request
 from flask import json
 import csv
 
+LOG_DIR = '/var/tabinsight/data/'
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -13,7 +15,8 @@ def index():
 @app.route('/publish/logs', methods = ['POST'])
 def parse_bulk_logstash():
          csv_obj = request.get_json()
-         f = csv.writer(open("/home/vineghlinux/Desktop/tabinsight.csv", "wb+"))
+         file_name = csv_obj[0]["device"]+".csv"
+         f = csv.writer(open(LOG_DIR + file_name, "wb+"))
          #f.writerow(["device", "access_time", "app_name", "use_time"])
          for csv_row in csv_obj:
              f.writerow([csv_row["device"], csv_row["access_time"],
@@ -23,7 +26,8 @@ def parse_bulk_logstash():
 @app.route('/publish/log',methods = ['POST'])
 def parse_update_logstash():
          csv_obj = request.get_json()
-         f = csv.writer(open("/home/vineghlinux/Desktop/tabinsight.csv", "wb+"))
+         file_name = csv_obj["device"]+".csv"
+         f = csv.writer(open(LOG_DIR + file_name, "wb+"))
          #f.writerow(["device", "access_time", "app_name", "use_time"])
          f.writerow([csv_obj["device"], csv_obj["access_time"], 
                  csv_obj["app_name"].replace(" ", "_"), csv_obj["use_time"]])
