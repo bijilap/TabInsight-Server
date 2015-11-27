@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "Elastic Search Service!"
+    return "<h1 style='color:blue'>Elastic Search Service!</h1>"
 
 @app.route('/publish/logs', methods = ['POST'])
 def parse_bulk_logstash():
