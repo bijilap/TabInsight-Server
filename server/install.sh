@@ -6,20 +6,19 @@ sudo apt-get -y install python-pip python-dev nginx
 sudo pip install virtualenv
 
 ## Create directory
-sudo mkdir -p /opt/tabinsight-app
-sudo chmod -R 755 /opt/tabinsight-app
-sudo virtualenv /opt/tabinsight-app/tabinsight-env
+sudo mkdir -p /opt/tabinsight
+sudo chmod -R 755 /opt/tabinsight
+sudo virtualenv /opt/tabinsight/tabinsight-env
+source tabinsight-env/bin/activate
 
 ## Install flask and uwsgi
 sudo pip install uwsgi flask
-
-## Install Elastic Search and Logstash
-sudo ../elk_installers/elk_install.sh
+deactivate
 
 ## Move tabinsight application to the correct folder
-sudo cp -r tabinsight-app/tabinsight.py /opt/tabinsight-app/
-sudo cp -r tabinsight-app/tabinsight.ini /opt/tabinsight-app/
-sudo cp -r tabinsight-app/wsgi.py /opt/tabinsight-app/
+sudo cp -r tabinsight-app/tabinsight.py /opt/tabinsight/
+sudo cp -r tabinsight-app/tabinsight.ini /opt/tabinsight/
+sudo cp -r tabinsight-app/wsgi.py /opt/tabinsight/
 sudo cp -r tabinsight-app/tabinsight.conf /etc/init/
 sudo cp -r tabinsight-app/tabinsight /etc/nginx/sites-available/
 
