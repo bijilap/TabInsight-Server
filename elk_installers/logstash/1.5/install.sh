@@ -4,4 +4,4 @@ sudo apt-get update
 sudo apt-get install logstash
 
 # configuring logstash to recieve params from tabinight
-cp ../conf/logstash.conf /etc/logstash/conf.d/ 
+cp ../config/logstash.conf /etc/logstash/conf.d/ 
