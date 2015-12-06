@@ -1,0 +1,7 @@
+
+echo 'deb http://packages.elasticsearch.org/logstash/2.1/debian stable main' | sudo tee /etc/apt/sources.list.d/logstash.list
+sudo apt-get update
+sudo apt-get install logstash
+
+# configuring logstash to recieve params from tabinight
+cp ../config/logstash.conf /etc/logstash/conf.d/ 
